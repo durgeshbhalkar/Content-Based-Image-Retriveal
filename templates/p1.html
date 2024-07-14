@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Based Image Retrieval</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: aquamarine;
+      }
+      .container {
+        align-items: center;
+        max-width: 2500px;
+        padding: auto;
+      }
+      .apply_box {
+        font-size: x-large;
+        font-style: oblique;
+        max-width: 1000px;
+        max-height: auto;
+        padding: 80px;
+        margin: 0 auto;
+        background-color: aliceblue;
+        margin-top: 50px;
+        box-shadow: 4px 3px 5px;
+        border-radius: 10px rgba(1, 1, 1, 0.1);
+        border-radius: 10px;
+      }
+      .fcontainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        margin-top: 50px;
+      }
+      .fcontainer {
+        display: flex;
+        flex-direction: column;
+        font-display: 10px;
+        size: 50px;
+      }
+      label {
+        font-size: 30px;
+        margin-bottom: 20px;
+        font-style: oblique;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      input {
+        padding: 10px 20px;
+      }
+      input:focus {
+        outline-color: #000;
+        box-sizing: border-box;
+      }
+      .button {
+        display: flex;
+        justify-content: first baseline;
+        size: 50px;
+        margin-left: 20px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container page">
+      <div class="container">
+        <div class="apply_box">
+          <h1 style="text-align: center">Content Based Image Retrieval</h1>
+          <form enctype="multipart/form-data" method="POST">
+            <div class="fcontainer">
+              <label for="User Input">User Input</label>
+              <input type="file" id="User Input" name="query_img" />
+            </div>
+            <div class="button">
+              <input type="Submit" /><input type="Reset" />
+            </div>
+          </form>
+          <h2>Query:</h2>
+          {% if query_path %}
+          <img src="{{ query_path }}" width="200px" />
+          {% endif %}
+          <h2>Results:</h2>
+          {% for score in scores %}
+          <figure style="float: left; margin-right: 20px; margin-bottom: 20px">
+            <img src="{{ score[1] }}" height="200px" />
+            <figcaption>{{ score[0] }}</figcaption>
+          </figure>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

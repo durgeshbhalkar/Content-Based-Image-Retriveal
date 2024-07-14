@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container page">
+      <h1 style="color: red"><u>Content Based Image Retrieval</u></h1>
+
+      <form method="POST" enctype="multipart/form-data">
+        <br /><br />
+        <input type="file" name="query_img" /><br /><br />
+        <input type="submit" /><input type="reset" />
+      </form>
+      <h2>Query:</h2>
+      {% if query_path %}
+      <img src="{{ query_path }}" width="200px" />
+      {% endif %}
+      <h2>Results:</h2>
+      {% for score in scores %}
+      <figure style="float: left; margin-right: 20px; margin-bottom: 20px">
+        <img src="{{ score[1] }}" height="200px" />
+        <figcaption>{{ score[0] }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </body>
+</html>

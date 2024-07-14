@@ -1,0 +1,5 @@
+{
+  "python.analysis.autoImportCompletions": true,
+  "cmake.configureOnOpen": true,
+  "liveServer.settings.port": 5501
+}
